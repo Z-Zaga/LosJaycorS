@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HISTORIA - Universo de Thonny</title>
+<style>
+/* ===== EDITAR AQUI: COLORES Y TEMA ===== */
+:root {
+  --primary: #a78bfa; /* violeta principal */
+  --primary-dark: #7c3aed;
+  --accent: #f59e0b; /* ámbar para detalles */
+  --bg: #050507;
+  --surface: #0f111a;
+  --surface-2: #171924;
+  --text: #e7e7f0;
+  --text-muted: #9a9ab3;
+  --border: #262836;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+  line-height: 1.6;
+}
+a { color: var(--primary); text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; }
+header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); background: rgba(5,5,7,.7); border-bottom: 1px solid var(--border); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-weight: 900; letter-spacing: .12em; font-size: 1.1rem; background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--text-muted); font-weight: 500; font-size: .95rem; }
+.hero { padding: 4rem 0 3rem; display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+.hero-cover { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); background: var(--surface); }
+.hero-content h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 0 0 .8rem; }
+.btns { display: flex; gap: .8rem; flex-wrap: wrap; }
+.btn { padding: .85rem 1.2rem; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-weight: 600; cursor: pointer; }
+.btn.primary { background: linear-gradient(180deg, var(--primary), var(--primary-dark)); border: none; color: #0a0614; font-weight: 800; }
+section { padding: 3.5rem 0; border-top: 1px solid rgba(255,255,255,.04); }
+.section-head h2 { font-size: 1.8rem; margin: 0 0 .4rem; }
+.chapters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.chapter-card { background: linear-gradient(180deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; cursor: pointer; }
+.ch-num { font-size: .8rem; color: var(--accent); font-weight: 700; }
+.ch-title { font-size: 1.15rem; margin: .3rem 0 .5rem; font-weight: 700; }
+.modal { position: fixed; inset: 0; background: rgba(3,3,6,.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1rem; z-index: 200; }
+.modal.hidden { display: none; }
+.reader { width: 100%; max-width: 860px; height: 90vh; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; }
+.reader-head { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.1rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+.reader-body { padding: 2rem 1.5rem; overflow-y: auto; }
+.p-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+.p-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.p-img { aspect-ratio: 1/1; background: #0c0e15; }
+.p-body { padding: 1rem; }
+footer { padding: 2.5rem 0; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; font-size: .9rem; }
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">LOS JAYCORS</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#capitulos">Capítulos</a></li>
+      <li><a href="#personajes">Personajes</a></li>
+      <li><a href="#mundo">Mundo</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="inicio" class="container hero">
+    <div class="hero-cover"></div>
+    <div class="hero-content">
+      <h1>Tu Universo, Tu Historia</h1>
+      <p>Acá vas a publicar tus novelas primero, después el webcomic y las animaciones. Esto es tuyo, Thonny.</p>
+      <div class="btns">
+        <button class="btn primary" onclick="alert('Próximamente')">Leé el último capítulo</button>
+        <button class="btn" onclick="document.getElementById('mundo').scrollIntoView({behavior:'smooth'})">Explorá el mundo</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="capitulos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Capítulos</h2>
+        <p>Hacé clic para leer. Reemplazá este texto con tus capítulos de Wattpad.</p>
+      </div>
+      <div class="chapters-grid">
+        <article class="chapter-card">
+          <div class="ch-num">CAPÍTULO 1</div>
+          <div class="ch-title">El Despertar</div>
+        </article>
+        <article class="chapter-card">
+          <div class="ch-num">CAPÍTULO 2</div>
+          <div class="ch-title">Cenizas del Pacto</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="personajes">
+    <div class="container">
+      <div class="section-head"><h2>Personajes</h2></div>
+      <div class="p-grid">
+        <div class="p-card"><div class="p-img"></div><div class="p-body"><strong>Kael</strong> - El Errante</div></div>
+        <div class="p-card"><div class="p-img"></div><div class="p-body"><strong>Lyra</strong> - Guardiana Rota</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mundo">
+    <div class="container">
+      <div class="section-head"><h2>Mundo</h2><p>Acá va tu worldbuilding.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    Universo creado por Thonny · <a href="https://www.threads.net/@thonnny97" target="_blank">Threads @thonnny97</a>
+  </div>
+</footer>
+</body>
+</html>
