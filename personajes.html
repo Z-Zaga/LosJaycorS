@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personajes - LOS JAYCORS</title>
+<style>
+:root { --primary:#0ea55a; --primary-dark:#065f33; --accent:#f59e0b; --bg:#050807; --surface:#0f1a14; --surface-2:#14231b; --text:#e7f0e7; --text-muted:#9ab3a3; --border:#1e3a2a; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.4); }
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Roboto,Inter,Arial;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 1.2rem}
+header{position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);background:rgba(5,8,7,.8);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900}
+.nav-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.nav-links a{color:var(--text-muted)}
+section{padding:3rem 0}
+h1{font-size:2.2rem;color:#f59e0b;text-shadow:2px 2px 0 #92400e}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.p-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.p-img{aspect-ratio:1/1;background:#0c1410}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.p-body{padding:1rem}
+.p-name{font-weight:800;font-size:1.2rem;color:var(--accent)}
+.p-role{color:var(--primary);font-size:.9rem;margin-bottom:.5rem}
+.p-bio{color:var(--text-muted)}
+.ficha{margin-top:.8rem;padding:.8rem;background:var(--surface-2);border:1px dashed var(--border);border-radius:12px;font-size:.9rem}
+.ficha dl{display:grid;grid-template-columns:100px 1fr;gap:.3rem}
+footer{padding:2rem 0;border-top:1px solid var(--border);color:var(--text-muted);text-align:center;margin-top:3rem}
+.btn{padding:.6rem 1rem;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo"><a href="index.html" style="color:#f59e0b;text-shadow:2px 2px 0 #92400e;font-weight:900;">LOS JAYCORS</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#capitulos">Capítulos</a></li>
+      <li><a href="personajes.html">Personajes</a></li>
+      <li><a href="index.html#mundo">Mundo</a></li>
+      <li><a href="index.html#bocetos">Bocetos</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="container">
+  <section>
+    <h1>Personajes</h1>
+    <p style="color:var(--text-muted)">Acá va toda la info. Tocá "Ver ficha completa" para expandir. Editá directo en el código donde dice EDITAR AQUI.</p>
+    <div class="p-grid" id="grid"></div>
+  </section>
+</main>
+
+<footer>Universo creado por Thonny</footer>
+
+<script>
+// EDITAR AQUI: agregá tus personajes
+const personajes = [
+  {name:'Kael', rol:'El Errante', bio:'Despierta sin memoria pero con una marca que quema a los espíritus.', img:"", edad:'¿27?', origen:'Desconocido', habilidad:'Eco de pacto', debilidad:'Recuerdos fragmentados', notas:'No confía en Lyra.'},
+  {name:'Lyra Vane', rol:'Guardiana Rota', bio:'Última de su orden. Busca redención.', img:"", edad:'29', origen:'Torres de Ceniza', habilidad:'Fuego frío', debilidad:'Culpa', notas:'Sabe más de lo que dice.'},
+  {name:'El Archivista', rol:'Memoria Viva', bio:'Guarda cada nombre olvidado.', img:"", edad:'Incalculable', origen:'La Biblioteca Hundida', habilidad:'Recordar', debilidad:'No puede intervenir', notas:'Habla en acertijos.'}
+];
+
+const grid = document.getElementById('grid');
+personajes.forEach((p,i)=>{
+  const card = document.createElement('div');
+  card.className='p-card';
+  card.innerHTML = `
+    <div class="p-img">${p.img?`<img src="${p.img}" alt="${p.name}">`:''}</div>
+    <div class="p-body">
+      <div class="p-name">${p.name}</div>
+      <div class="p-role">${p.rol}</div>
+      <div class="p-bio">${p.bio}</div>
+      <button class="btn" onclick="document.getElementById('f${i}').style.display = document.getElementById('f${i}').style.display==='block'?'none':'block'">Ver ficha completa</button>
+      <div class="ficha" id="f${i}" style="display:none">
+        <dl>
+          <dt>Edad</dt><dd>${p.edad}</dd>
+          <dt>Origen</dt><dd>${p.origen}</dd>
+          <dt>Habilidad</dt><dd>${p.habilidad}</dd>
+          <dt>Debilidad</dt><dd>${p.debilidad}</dd>
+          <dt>Notas</dt><dd>${p.notas}</dd>
+        </dl>
+      </div>
+    </div>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
